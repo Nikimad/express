@@ -3,7 +3,7 @@ import { fileURLToPath } from "node:url";
 import { Low } from "lowdb";
 import { JSONFile } from "lowdb/node";
 import express from "express";
-import {uniqueId} from "lodash";
+import uniqueId from "lodash/uniqueId.js";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const filePath = join(__dirname, "db.json");
