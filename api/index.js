@@ -34,7 +34,6 @@ app.get("/boards", async (req, res) => {
   const id = uniqueId();
   db.data.boards.items[id] = {id, ...req.body};
   db.data.boards.ids = [id, db.data.boards.ids];
-  await db.write();
 });
 
 app.listen(port);
