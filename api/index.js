@@ -20,6 +20,8 @@ const db = new Low(adapter, defaultData);
 const app = express();
 const port = 3000;
 
+app.use(express.json());
+
 app.get("/", (req, res) => {
   res.send("Demo server");
 });
@@ -30,7 +32,7 @@ app.get("/boards", async (req, res) => {
 });
 
 app.post("/boards", async (req, res) => {
-  res.send(req.body);
+  res.json(req.body);
 });
 
 app.listen(port);
