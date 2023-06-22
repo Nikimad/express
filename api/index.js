@@ -18,8 +18,8 @@ app.get('/', (req, res) => {
   res.send('hello world');
 });
 
-app.get("/boards", (req, res) => {
-  db.read();
+app.get("/boards", async (req, res) => {
+  await db.read();
   res.send(db.data.boards);
 });
 
