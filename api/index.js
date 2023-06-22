@@ -1,21 +1,15 @@
-import { join, dirname } from "node:path";
-import { fileURLToPath } from "node:url";
 import { Low } from "lowdb";
-import { JSONFile } from "lowdb/node";
+import { LocalStorage } from 'lowdb/browser'
 import express from "express";
 import uniqueId from "lodash/uniqueId.js";
 
-const __dirname = dirname(fileURLToPath(import.meta.url));
-const filePath = join(__dirname, "db.json");
-
-const adapter = new JSONFile(filePath);
 const defaultData = {
   boards: {
     items: {},
     ids: [],
   },
 };
-const db = new Low(adapter, defaultData);
+const db = new Low(new LocalStorage("db"), defaultData);
 
 const app = express();
 const port = 3000;
@@ -38,8 +32,7 @@ app.post("/boards", async (req, res) => {
   db.data.boards.items[id] = entity;
   db.data.boards.ids = [id, ...db.data.boards.ids];
   await db.write();
-  await db.read();
-  res.json(db.data);
+  res.json(entity);
 });
 
 app.listen(port);
