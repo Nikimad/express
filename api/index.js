@@ -3,12 +3,15 @@ import { LocalStorage } from 'lowdb/browser'
 import express from "express";
 import uniqueId from "lodash/uniqueId.js";
 
+localStorage.setItem("db");
+
 const defaultData = {
   boards: {
     items: {},
     ids: [],
   },
 };
+
 const db = new LowSync(new LocalStorage("db"), defaultData);
 
 const app = express();
