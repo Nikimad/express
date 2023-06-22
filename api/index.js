@@ -30,7 +30,7 @@ app.get("/boards", async (req, res) => {
 });
 
 app.post("/boards", async (req, res) => {
-  res.send(req.body);
+  res.send("Post");
 });
 
 app.listen(port);
