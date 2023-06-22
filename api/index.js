@@ -3,7 +3,7 @@ import { fileURLToPath } from "node:url";
 import { Low } from "lowdb";
 import { JSONFile } from "lowdb/node";
 import express from "express";
-import uniqueId from "lodash/uniqueId";
+import {uniqueId} from "lodash";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const filePath = join(__dirname, "db.json");
@@ -27,6 +27,14 @@ app.get("/", (req, res) => {
 app.get("/boards", async (req, res) => {
   await db.read();
   res.send(db.data.boards);
+});
+
+app.get("/boards", async (req, res) => {
+  await db.read();
+  const id = uniqueId();
+  db.data.boards.items[id] = {id, ...req.body};
+  db.data.boards.ids = [id, db.data.boards.ids];
+  await db.write();
 });
 
 app.listen(port);
