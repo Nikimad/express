@@ -29,9 +29,4 @@ app.get("/boards", async (req, res) => {
   res.send(db.data.boards);
 });
 
-app.get("/boards", async (req, res) => {
-  await db.read();
-  const id = uniqueId();
-});
-
 app.listen(port);
