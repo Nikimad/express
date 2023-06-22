@@ -30,13 +30,7 @@ app.get("/boards", async (req, res) => {
 });
 
 app.post("/boards", async (req, res) => {
-  await db.read();
-  const id = uniqueId();
-  const entity = { id, ...JSON.parse(req.body) };
-  db.data.boards.items[id] = entity;
-  db.data.boards.ids = [id, ...db.data.boards.ids];
-  await db.write();
-  res.send(JSON.stringify(entity));
+  res.send(req.body);
 });
 
 app.listen(port);
