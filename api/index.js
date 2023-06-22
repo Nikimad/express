@@ -8,7 +8,12 @@ const __dirname = dirname(fileURLToPath(import.meta.url));
 const filePath = join(__dirname, "db.json");
 
 const adapter = new JSONFile(filePath);
-const defaultData = { posts: [] };
+const defaultData = {
+  boards: {
+    items: {},
+    ids: [],
+  },
+};
 const db = new Low(adapter, defaultData);
 
 const app = express();
