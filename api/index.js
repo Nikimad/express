@@ -23,13 +23,13 @@ app.get("/boards", async (req, res) => {
   await db.read();
   res.send(db.data.boards);
 });
-/*
+
 app.post("/boards", async ({ body }) => {
   await db.read();
   const id = uniqueId();
   db.data.boards.items[id] = { id, ...body };
   db.data.boards.ids = [id, ...db.data.boards.ids];
-  await db.write();
 });
-*/
+
+
 app.listen(port);
