@@ -35,7 +35,6 @@ app.post("/boards", async (req, res) => {
   await db.read();
   const id = uniqueId();
   const entity = { id, ...req.body };
-  db.data.ids.push(id);
   await db.write();
   res.json(entity);
 });
