@@ -32,7 +32,9 @@ app.get("/boards", async (req, res) => {
 });
 
 app.post("/boards", async (req, res) => {
-  res.json(req.body);
+  const id = uniqueId();
+  const entity = { id, ...req.body };
+  res.json(entity);
 });
 
 app.listen(port);
