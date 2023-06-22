@@ -26,7 +26,7 @@ app.get("/boards", async (req, res) => {
   res.send(db.data.boards);
 });
 
-app.get("/boards", async (req, res) => {
+app.post("/boards", async (req, res) => {
   await db.read();
   const id = uniqueId();
   const entity = { id, ...req.body};
