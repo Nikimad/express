@@ -29,10 +29,10 @@ app.get("/boards", async (req, res) => {
 app.post("/boards", async (req, res) => {
   await db.read();
   const id = uniqueId();
-  const entity = { id, ...req.body};
+  const entity = { id, ...JSON.parse(req.body)};
   db.data.boards.push(entity);
   await db.write();
-  res.send(entity);
+  res.send(JSON.stringify(entity));
 });
 
 app.listen(port);
