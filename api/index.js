@@ -10,7 +10,10 @@ const filePath = join(__dirname, "db.json");
 
 const adapter = new JSONFile(filePath);
 const defaultData = {
-  boards: [],
+  boards: {
+    items: {},
+    ids: [],
+  },
 };
 const db = new Low(adapter, defaultData);
 
@@ -29,8 +32,9 @@ app.get("/boards", async (req, res) => {
 app.post("/boards", async (req, res) => {
   await db.read();
   const id = uniqueId();
-  const entity = { id, ...JSON.parse(req.body)};
-  db.data.boards.push(entity);
+  const entity = { id, ...JSON.parse(req.body) };
+  db.data.boards.items[id] = entity;
+  db.data.boards.ids = [id, ...db.data.boards.ids];
   await db.write();
   res.send(JSON.stringify(entity));
 });
