@@ -1,0 +1,24 @@
+{
+  "name": "express",
+  "version": "1.0.0",
+  "description": "",
+  "main": "api",
+  "type": "module",
+  "scripts": {
+    "start": "node api"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nikimad/express.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nikimad/express/issues"
+  },
+  "homepage": "https://github.com/Nikimad/express#readme",
+  "dependencies": {
+    "express": "^4.18.2",
+    "lowdb": "^6.0.1"
+  }
+}
