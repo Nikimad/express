@@ -36,7 +36,7 @@ app.post("/boards", async (req, res) => {
   const id = uniqueId();
   const entity = { id, ...req.body };
   db.data.boards.items[id] = entity;
-  db.data.boards.ids = [id, ...db.data.ids];
+  db.data.boards.ids = [id, ...db.data.boards.ids];
   await db.write();
   res.json(entity);
 });
