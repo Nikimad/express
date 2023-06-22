@@ -14,8 +14,12 @@ const db = new Low(adapter, defaultData);
 const app = express();
 const port = 3000;
 
-app.get("/boards", async (req, res) => {
-  await db.read();
+app.get('/', (req, res) => {
+  res.send('hello world');
+});
+
+app.get("/boards", (req, res) => {
+  db.read();
   res.send(db.data.boards);
 });
 
